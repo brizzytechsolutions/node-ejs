@@ -10,7 +10,7 @@ const User = require('./models/user');
 
 app.use(cors());
 
-mongoose.connect('mongodb://localhost/auth_demo_app', {
+mongoose.connect('mongodb://localhost/auth_demo_ejs', {
   useCreateIndex: true,
   useFindAndModify: false,
   useNewUrlParser: true,
@@ -37,37 +37,45 @@ app.use(
   })
 );
 
+// Passport settings
 passport.serializeUser(User.serializeUser()); //session encoding
 passport.deserializeUser(User.deserializeUser()); //session decoding
 passport.use(new LocalStrategy(User.authenticate()));
-app.set('view engine', 'ejs');
-app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(express.urlencoded({ extended: true }));
+
+// Set up View Engine to use EJS
+app.set('view engine', 'ejs');
+
 //=======================
 //      R O U T E S
 //=======================
+
 app.get('/', (req, res) => {
   res.render('home');
 });
+
 app.get('/userprofile', isLoggedIn, (req, res) => {
   res.render('userprofile');
 });
+
 //Auth Routes
 app.get('/login', (req, res) => {
   res.render('login');
 });
-app.post(
-  '/login',
-  passport.authenticate('local', {
+app.post('/login', passport.authenticate('local', {
     successRedirect: '/userprofile',
     failureRedirect: '/login',
   }),
   function (req, res) {}
 );
+
 app.get('/register', (req, res) => {
   res.render('register');
 });
+
 app.post('/register', (req, res) => {
   User.register(
     new User({
@@ -87,16 +95,19 @@ app.post('/register', (req, res) => {
     }
   );
 });
+
 app.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
+
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
   res.redirect('/login');
 }
+
 //Listen On Server
 app.listen(process.env.PORT || 3000, function (err) {
   if (err) {
