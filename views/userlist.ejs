@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <%- include ('./partials/nav'); %>
+            <h3>List users</h3>
+            <table class="table">
+                <thead class="thead-dark table-hover">
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Telephone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for( var i=0; i < users.length; i++ ) { %>
+                    <tr>
+                        <td><%= users[i].username %></td>
+                        <td><%= users[i].phone %></td>
+                        <td><%= users[i].telephone %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <%- include('./partials/footer'); %>
+        </div>
+    </div>
+</div>

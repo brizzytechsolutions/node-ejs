@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <%- include ('./partials/nav'); %>
+            <h3>List movies</h3>
+            <div class="input-group pull-right">
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                    aria-describedby="search-addon" />
+                <button type="button" class="btn btn-outline-primary">search</button>
+            </div>
+            <br>
+            <div class="">
+                <div id="register-link" class="">
+                    <a href="./add" class="text-info btn btn-outline-secondary">Add Movie</a>
+                </div>
+            </div>
+            <br>
+            <table class="table">
+                <thead class="thead-dark table-hover">
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Director</th>
+                        <th scope="col">Genre</th>
+                        <th scope="col">Release Date</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (lists.length > 0) { %>
+                    <% for(let list of lists ) { %>
+                    <tr>
+                        <td><%= list.title %></td>
+                        <td><%= list.director %></td>
+                        <td><%= list.genre %></td>
+                        <td><%= list.release_date %></td>
+                        <td>
+                            <a href="/edit/<%= list._id %>" class="text-info btn btn-outline-warning">Edit</a>
+                            <a href="/deleteMovie/<%= list._id %>" class="text-info btn btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                    <% } %>
+                    <% } else { %>
+                        <tr>
+                            <td>No data found</td>
+                        </tr>
+                    <% }%>
+                </tbody>
+            </table>
+            <%- include('./partials/footer'); %>
+        </div>
+    </div>
+</div>

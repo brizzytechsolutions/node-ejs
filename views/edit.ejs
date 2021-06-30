@@ -1,0 +1,68 @@
+<%- include('../views/partials/nav'); %>
+
+<body>
+    <div id="login">
+        <br>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="/edit/<%= movie._id %>" method="POST">
+                            <h3 class="text-center text-info">Edit User</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Title:</label><br>
+                                <input type="text" name="title" id="title" class="form-control"
+                                    value="<%= movie.title %>">
+                            </div>
+                            <div class="form-group">
+                                <label for="director" class="text-info">Director:</label><br>
+                                <input type="director" name="director" id="director" class="form-control"
+                                    value="<%= movie.director %>">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="genre" class="text-info">Genre:</label><br>
+                                        <select class="form-select form-control" name="genre" id="genre"
+                                            aria-label="Default select example" value="<%= movie.genre %>">
+                                            <option selected>Select genre</option>
+                                            <option value="Action" <%= movie.genre == "Action" ? "selected" : "" %>>
+                                                Action</option>
+                                            <option value="Horror" <%= movie.genre == "Horror" ? "selected" : "" %>>
+                                                Horror</option>
+                                            <option value="Comedy" <%= movie.genre == "Comedy" ? "selected" : "" %>>
+                                                Comedy</option>
+                                            <option value="Romance" <%= movie.genre == "Romance" ? "selected" : "" %>>
+                                                Romance</option>
+                                            <option value="Adventure"
+                                                <%= movie.genre == "Adventure" ? "selected" : "" %>>Adventure</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="password" class="text-info">Release date:</label><br>
+                                        <input type="date" name="release_date" id="release_date" class="form-control"
+                                            value="<%= movie.release_date %> ">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <input type="submit" name="submit" class="btn btn-info btn-md" value="Update">
+                            <br>
+                            <hr>
+                            <div class="">
+                                <div id="register-link" class="">
+                                    <a href="/movies" class="text-info btn btn-outline-secondary">back to movies</a>
+                                </div>
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <hr>
+    <%- include('../views/partials/footer'); %>

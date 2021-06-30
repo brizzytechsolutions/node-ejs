@@ -1,0 +1,62 @@
+<%- include('../views/partials/nav'); %>
+
+<body>
+    <div id="login">
+        <!-- <h3 class="text-center text-white pt-5">Register User</h3> -->
+        <br>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="" method="post">
+                            <h3 class="text-center text-info">Add User</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Title:</label><br>
+                                <input type="text" name="title" id="title" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="director" class="text-info">Director:</label><br>
+                                <input type="director" name="director" id="director" class="form-control">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="genre" class="text-info">Genre:</label><br>
+                                        <!-- <input type="number" name="phone" id="phone" class="form-control"> -->
+                                        <select class="form-select form-control" name="genre" id="genre" aria-label="Default select example">
+                                            <option selected>Select genre</option>
+                                            <option value="Action">Action</option>
+                                            <option value="Horror">Horror</option>
+                                            <option value="Comedy">Comedy</option>
+                                            <option value="Romance">Romance</option>
+                                            <option value="Romance">Adventure</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="password" class="text-info">Release date:</label><br>
+                                        <input type="date" name="release_date" id="release_date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <div id="register-link" class="">
+                                    <a href="./movies" class="text-info btn btn-outline-secondary">back to movies</a>
+                                </div>
+                            </div>
+                            <br>
+                            <hr>
+                            <input type="submit" name="submit" class="btn btn-info btn-md" value="Create">
+
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <hr>
+    <%- include('../views/partials/footer'); %>
